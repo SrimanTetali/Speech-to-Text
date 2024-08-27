@@ -10,19 +10,23 @@ st.set_page_config(page_title="Speech to Text Converter", page_icon="🎤", layo
 st.markdown(styles.load_css(), unsafe_allow_html=True)
 
 # Header Section
-st.title("🎤 Speech to Text Converter")
-st.markdown("### Effortlessly Convert Your Speech into Text")
-st.markdown("Speak clearly into your microphone and let the app transcribe your words into text.")
+st.title("🗣️ Speech to Text Converter")
+st.markdown("""
+### Effortlessly Convert Your Speech into Text
+Speak clearly into your microphone and let the app transcribe your words into text.
+""")
 
 # Create a dropdown for selecting the view
 option = st.sidebar.selectbox(
     "Select an option",
-    ["Converter", "Accuracy Test"]
+    ["Converter", "Accuracy Test"],
+    index=0
 )
 
 # Display the relevant content based on the dropdown selection
 if option == "Converter":
-    if st.button("🎤 Click to Speak"):
+    st.markdown("---")
+    if st.button("🎤 Click to Speak", key="record_button"):
         speech_to_text()
 
 elif option == "Accuracy Test":
@@ -46,7 +50,7 @@ elif option == "Accuracy Test":
         ("./Audios/s14.wav", "చెరువు కట్ట మీద పోలేరమ్మ గుడి ఉన్నది"),
     ]
 
-    if st.button("Test Accuracy"):
+    if st.button("Test Accuracy", key="test_button"):
         st.markdown("### Results")
         test_stt_accuracy(test_data)
 
